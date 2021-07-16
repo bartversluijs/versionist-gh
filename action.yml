@@ -1,0 +1,23 @@
+name: 'Versionist'
+description: 'Opinionated versioning using versionist'
+author: 'bartversluijs'
+branding:
+  color: 'blue'
+  icon: 'tag'
+
+inputs:
+  commit:
+    description: 'Commit changelog and create tag'
+    required: true
+  github_email:
+    description: 'GitHub email to use for commits.'
+    required: false # Required if commit is 'true'
+  github_username:
+    description: 'GitHub username to use for commits.'
+    required: false # Required if commit is 'true'
+  github_token:
+    description: 'GitHub token to use for commits. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
+    required: false # Required if commit is 'true'
+runs:
+  using: docker
+  image: ./Dockerfile
