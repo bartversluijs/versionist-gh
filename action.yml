@@ -20,4 +20,4 @@ inputs:
     required: false # Required if commit is 'true'
 runs:
   using: docker
-  image: bartversluijs/versionist-gh:latest
+  image: docker://bartversluijs/versionist-gh:latest
