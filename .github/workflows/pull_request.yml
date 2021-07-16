@@ -19,7 +19,7 @@ jobs:
         persist-credentials: false
     - name: Run versionist
       id: versionist
-      uses: ./
+      uses: ./test
       with:
         commit: false
 
