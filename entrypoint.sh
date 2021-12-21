@@ -6,12 +6,12 @@ set -e
 # - package.json file
 # - defaults to v0.0.1 if previous files not present
 function get_version () {
-  local VERSION=v0.0.1
+  local VERSION=0.0.1
 
   if [[ -f VERSION ]]; then
-    VERSION="v$(cat VERSION)"
+    VERSION="$(cat VERSION)"
   elif [[ -f package.json ]]; then
-    VERSION="v$(jq -r .version package.json)"
+    VERSION="$(jq -r .version package.json)"
   fi
 
   echo "$VERSION"
@@ -54,7 +54,7 @@ function create_tag_if_not_exists () {
 
 # run_versionist: run versionist
 function run_versionist () {
-  local CURRENT_VERSION="$(get_version)"
+  local CURRENT_VERSION="v$(get_version)"
 
   echo "Running versionist..."
   echo "Current version: $CURRENT_VERSION"
@@ -70,7 +70,7 @@ function run_versionist () {
 
   # Run versionist
   versionist $@
-  local NEW_VERSION=$(get_version)
+  local NEW_VERSION="v$(get_version)"
   echo "New version: $NEW_VERSION"
 
   if [[ $COMMIT_CHANGES == "true" ]]; then
@@ -103,7 +103,7 @@ check_required_inputs
 
 echo "--- Versionist ---"
 [[ -n "$DRY_RUN" ]] && echo "Running in dry run mode: no actions will be commited."
-echo "Current version: $(get_version)"
+echo "Current version: v$(get_version)"
 
 # Only show when versionist changes are going to be comitted
 if [[ $COMMIT_CHANGES == "true" ]]; then

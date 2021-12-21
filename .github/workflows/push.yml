@@ -20,7 +20,7 @@ jobs:
         persist-credentials: false
     - name: Run versionist
       id: versionist
-      uses: ./test
+      uses: bartversluijs/versionist-gh@master
       with:
         # Provide your versionist service account details
         commit: true
