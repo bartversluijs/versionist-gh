@@ -1,6 +1,11 @@
 FROM bartversluijs/versionist:v6.6.3
+WORKDIR /usr/src/app
+
+# Install bash
+RUN apk add --update --no-cache bash
 
 # Add entrypoint
-COPY entrypoint.sh /entrypoint.sh
+COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 
-CMD [ "/entrypoint.sh" ]
+# Run entrypoint
+CMD [ "/usr/src/app/entrypoint.sh" ]
