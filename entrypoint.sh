@@ -83,9 +83,9 @@ function run_versionist () {
     fi
   fi
 
-  # Set outputs
-  echo "::set-output name=version::$(get_version)"
-  echo "::set-output name=updated::true"
+  # Set environment files
+  echo "version=$(get_version)" >> $VERSIONIST_VERSION
+  echo "updated=true" >> $VERSIONIST_UPDATED
 }
 
 # Defaults
@@ -116,7 +116,8 @@ else
   echo "Commiting changes: No"
 fi
 
-echo "::set-output name=version::$(get_version)"
-echo "::set-output name=updated::false"
+# Set environment files
+echo "version=$(get_version)" >> $VERSIONIST_VERSION
+echo "updated=false" >> $VERSIONIST_UPDATED
 
 run_versionist $@
