@@ -84,8 +84,8 @@ function run_versionist () {
   fi
 
   # Set environment files
-  echo "version=$(get_version)" >> $VERSIONIST_VERSION
-  echo "updated=true" >> $VERSIONIST_UPDATED
+  echo "version=$(get_version)" >> $GITHUB_OUTPUT
+  echo "updated=true" >> $GITHUB_OUTPUT
 }
 
 # Defaults
@@ -117,7 +117,7 @@ else
 fi
 
 # Set environment files
-echo "version=$(get_version)" >> $VERSIONIST_VERSION
-echo "updated=false" >> $VERSIONIST_UPDATED
+echo "version=$(get_version)" >> $GITHUB_OUTPUT
+echo "updated=false" >> $GITHUB_OUTPUT
 
 run_versionist $@
